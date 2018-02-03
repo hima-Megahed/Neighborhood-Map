@@ -8,7 +8,7 @@
 
 I have Included list of near hospitals, parks, malls And Of-Course Restaurants as i like food xD. 
 
-![Screenshot of Map](hhttps://i.imgur.com/kYOloVu.png)
+![Screenshot of Map](https://i.imgur.com/kYOloVu.png)
 
 Also there is a reliable Searching Utility.
 
