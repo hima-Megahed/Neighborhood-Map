@@ -1,5 +1,3 @@
-// To work in strict mode
-'use strict'
 // map variable holds an object from MAP class
 var map;
 // Array of markers to hide them all
@@ -66,7 +64,7 @@ var Place = function (place) {
     jqXHR.done(function (data) {
         mydata = data;
     }).fail(function () {
-        alert("an Error has occured in FourSquare API, try again.")
+        alert("an Error has occured in FourSquare API, try again.");
     });
     // Get results from the get request
     var results = mydata.response.venues[0];
@@ -101,15 +99,15 @@ var Place = function (place) {
     });
 
     // Setting Visibilty of marker 
-    self.showMarker = ko.computed(function() {
-		if(self.Visible() === true) {
-			self.marker.setMap(map);
-		} else {
-			self.marker.setMap(null);
-		}
-		return true;
+    self.showMarker = ko.computed(function () {
+        if (self.Visible() === true) {
+            self.marker.setMap(map);
+        } else {
+            self.marker.setMap(null);
+        }
+        return true;
     }, this);
-    
+
     // Adding marker to Markers Array
     Markers.push(self.marker);
     // Adding Listener to click event
@@ -121,7 +119,7 @@ var Place = function (place) {
         // Setting Animation bounce
         self.marker.setAnimation(google.maps.Animation.BOUNCE);
         // Setting Time Out To stop marker From Bouncing
-        setTimeout(() => {
+        setTimeout(function () {
             self.marker.setAnimation(null);
         }, 2000);
     });
@@ -135,10 +133,10 @@ var Place = function (place) {
     });
 
     // Setting trigger Bounce event marker to call it from the view
-    self.bounceElement = () => {
+    self.bounceElement = function () {
         google.maps.event.trigger(self.marker, 'click');
     };
-}
+};
 
 // Format Address
 function getAddress(array) {
@@ -149,7 +147,7 @@ function getAddress(array) {
             tmp += " .";
         }
         else {
-            tmp += ", "
+            tmp += ", ";
         }
     }
     return tmp;
@@ -158,10 +156,10 @@ function getAddress(array) {
 
 // Hide All Markers
 function hideAllInfoWindows() {
-    Markers.forEach((marker) => {
+    Markers.forEach(function (marker) {
         marker.infowindow.close(map, marker);
     });
-    Markers.forEach((marker) => {
+    Markers.forEach(function (marker) {
         marker.setAnimation(null);
     });
 }
@@ -186,25 +184,25 @@ var ViewModel = function () {
     // Boundary Object to fit locations in the map
     var bounds = new google.maps.LatLngBounds();
     //
-    nearByLocaions.forEach((location) => {
+    nearByLocaions.forEach(function (location) {
         bounds.extend(location.location);
-    })
+    });
     // Extend the boundaries of the map for each marker
     map.fitBounds(bounds);
 
     // Adding all nearByLocations items to Places list to filter them
-    nearByLocaions.forEach((location) => {
+    nearByLocaions.forEach(function (location) {
         self.Places.push(new Place(location));
     });
 
     // Filtering functionality based on word bounded to the search box in the view
-    self.filterdPlaces = ko.computed(() => {
+    self.filterdPlaces = ko.computed(function () {
         var filteredItem = self.searchPhrase().toLowerCase();
         if (!filteredItem) {
-            self.Places().forEach((place) => {
+            self.Places().forEach(function (place) {
                 place.Visible(true);
             });
-            return self.Places()
+            return self.Places();
         }
         else {
             return ko.utils.arrayFilter(self.Places(), function (place) {
@@ -245,7 +243,7 @@ function makeMarkerIcon(markerColor) {
 }
 
 
-// Sliders Animation functions
+// Sliders Animation functionsS
 $(document).ready(function () {
     $("#sidebar").mCustomScrollbar({
         theme: "minimal"
