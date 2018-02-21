@@ -1,6 +1,6 @@
 # Neighborhood-Map
 
-> This Project is developed as the 5th project of **Udacity Fullstack Web Developer Nanodegree**.
+> This Project was developed as the 5th project of **Udacity Fullstack Web Developer Nanodegree**.
 
 ## Getting Started
 
